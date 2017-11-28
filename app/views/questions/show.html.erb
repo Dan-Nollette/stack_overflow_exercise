@@ -1,0 +1,12 @@
+<h1><%= @question.title %></h1>
+<h2><%= @question.question_text %></h2>
+<br>
+
+<% if @question.responses.any? %>
+  <h2>Answers</h2>
+  <hr>
+  <% @question.responses each do |response| %>
+    <%= response.response_text %>
+    <hr>
+  <% end %>
+<% end %>

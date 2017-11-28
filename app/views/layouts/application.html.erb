@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <% if current_user %>
+       <%= current_user.name %> | <%= link_to "Sign out", '/signout' %>
+     <% else %>
+       <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
+     <% end %>
+     <br>
+     <%= flash[:alert] %>
+     <%= flash[:notice] %>
+
     <%= yield %>
   </body>
 </html>
