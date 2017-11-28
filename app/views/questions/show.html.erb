@@ -2,11 +2,20 @@
 <h2><%= @question.question_text %></h2>
 <br>
 
-<% if @question.responses.any? %>
+<% if @question.responses.length > 1 %>
   <h2>Answers</h2>
   <hr>
-  <% @question.responses each do |response| %>
-    <%= response.response_text %>
-    <hr>
+  <% @question.responses.each do |response| %> 
+    <% if response.response_text %>
+      <%= response.response_text %>
+      <hr>
+    <% end %>
   <% end %>
+<% end %>
+
+<%= form_for [@question, @response] do |f| %>
+  <%= f.label "Respond: " %>
+  <br>
+  <%= f.text_area :response_text %>
+  <%= f.submit "Add" %>
 <% end %>
