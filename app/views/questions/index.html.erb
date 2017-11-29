@@ -12,4 +12,6 @@
 <% else %>
   <p>Oops! Currently we dont have question....</p>
 <% end %>
+<% if current_user %>
 <button><%= link_to 'Add Question', new_question_path() %></button>
+<% end %>
